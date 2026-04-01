@@ -18,10 +18,9 @@ class Distance:
             return Distance(self.km + other.km)
         elif isinstance(other, float):
             return Distance(self.km + other)
-        else:
-            raise TypeError
+        raise TypeError
 
-    def __iadd__(self, other: Self | int | float) -> None:
+    def __iadd__(self, other: Self | int | float) -> Self:
         if isinstance(other, int):
             self.km += other
             return self
@@ -31,13 +30,12 @@ class Distance:
         elif isinstance(other, float):
             self.km += other
             return self
-        else:
-            raise TypeError
+        raise TypeError
 
-    def __mul__(self, other: int) -> Self:
+    def __mul__(self, other: int | float) -> Self:
         return Distance(self.km * other)
 
-    def __truediv__(self, other: int) -> Self:
+    def __truediv__(self, other: int | float) -> Self:
         return Distance(round(self.km / other, 2))
 
     def __ge__(self, other: Self | int | float) -> bool:
@@ -47,8 +45,7 @@ class Distance:
             return self.km >= other.km
         elif isinstance(other, float):
             return self.km >= other
-        else:
-            raise TypeError
+        raise TypeError
 
     def __gt__(self, other: Self | int | float) -> bool:
         if isinstance(other, int):
@@ -57,8 +54,7 @@ class Distance:
             return self.km > other.km
         elif isinstance(other, float):
             return self.km > other
-        else:
-            raise TypeError
+        raise TypeError
 
     def __le__(self, other: Self | int | float) -> bool:
         if isinstance(other, int):
@@ -67,8 +63,7 @@ class Distance:
             return self.km <= other.km
         elif isinstance(other, float):
             return self.km <= other
-        else:
-            raise TypeError
+        raise TypeError
 
     def __lt__(self, other: Self | int | float) -> bool:
         if isinstance(other, int):
@@ -77,8 +72,7 @@ class Distance:
             return self.km < other.km
         elif isinstance(other, float):
             return self.km < other
-        else:
-            raise TypeError
+        raise TypeError
 
     def __eq__(self, other: Self | int | float) -> bool:
         if isinstance(other, int):
@@ -87,5 +81,4 @@ class Distance:
             return self.km == other.km
         elif isinstance(other, float):
             return self.km == other
-        else:
-            raise TypeError
+        raise TypeError
